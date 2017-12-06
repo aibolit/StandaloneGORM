@@ -15,3 +15,5 @@ dependencies {
     runtime 'com.bloomberg.comdb2:cdb2jdbc:2.0.0'
     runtime 'com.bloomberg.comdb2:cdb2hibernate:0.1.0'
 }
+
+run.doFirst { environment 'CDB2JDBC_STATEMENT_QUERYEFFECTS', 'true' }

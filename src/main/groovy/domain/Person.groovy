@@ -7,6 +7,7 @@
 package domain
 
 import grails.gorm.annotation.Entity
+import groovy.transform.CompileStatic
 import groovy.transform.ToString
 import groovy.transform.TupleConstructor
 import org.grails.datastore.gorm.GormEntity 
