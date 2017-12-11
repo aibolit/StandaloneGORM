@@ -24,20 +24,12 @@ def configuration = [
 ]
 
 
-def entities = [Person, User, Widget]
+def entities = [User, Widget, Soup, Thought]
 HibernateDatastore datastore = new HibernateDatastore(configuration, *entities)
 
 
 @Transactional(isolation=Isolation.READ_COMMITTED)
 def doSomething() {
-    def p = new Person("Apple", "Cherry")
-    println p
-    println p.save(flush:true)
-    
-    
-    println Person.findByFirstName("Apple")
-        
-        
     def w = new Widget(type: "pqr")
     w.lastModified = new Date()
     println w
@@ -51,7 +43,7 @@ def doSomething() {
 
 
     def b = new User(name: 'ijk')
-    b.title = "boss"
+    b.title = "title"
     b.save(flush:true)
     println b
 
@@ -65,6 +57,21 @@ def doSomething() {
     println "> find again ${User.get(c.id)}"
     
     println "done"
+    
+    
+    Soup soup = new Soup(brand: 'a', product: 'b', flavor: 'c')
+    println "> Saving soup: ${soup.save(flush:true)}"
+    
+    Thought th1 = new Thought(uuid: 7, rating: 2, soup: soup)
+    println "> Saving thought 1: ${th1.save(flush:true)}"
+    
+    Thought th2 = new Thought(uuid: 7, rating: 4, soup: soup)
+    println "> Saving thought 2: ${th2.save(flush:true)}"
+    
+    
+    println "> Soup thoughts A: ${Thought.findBySoup(soup)}"
+    
+    println "> Soup thoughts B: ${Soup.get(soup.id).thoughts}"
 }
 
 datastore.withNewSession {doSomething()}

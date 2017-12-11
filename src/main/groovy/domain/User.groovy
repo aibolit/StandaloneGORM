@@ -8,11 +8,8 @@ import groovy.transform.ToString
 class User {
 
     String name 
-
     int myNum = 4
-
     List<Widget> widgets = []
-
     String title
 
 
