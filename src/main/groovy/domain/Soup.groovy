@@ -22,6 +22,7 @@ class Soup {
     String brand
     String product
     String flavor
+    boolean live
     
     static hasMany = [thoughts: Thought]
     static mappedBy = [thoughts: 'soup']

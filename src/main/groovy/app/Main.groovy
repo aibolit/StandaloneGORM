@@ -24,7 +24,7 @@ def configuration = [
 ]
 
 
-def entities = [User, Widget, Soup, Thought]
+def entities = [Widget, User, Soup, Thought]
 HibernateDatastore datastore = new HibernateDatastore(configuration, *entities)
 
 
@@ -34,7 +34,7 @@ def doSomething() {
     w.lastModified = new Date()
     println w
     //println w.save()
-    
+
     def a = new User(name: "abc", title:"abct", widgets:[w])
     println a.save(flush:true)
 
@@ -59,7 +59,7 @@ def doSomething() {
     println "done"
     
     
-    Soup soup = new Soup(brand: 'a', product: 'b', flavor: 'c')
+    Soup soup = new Soup(brand: 'a', product: 'b', flavor: 'c', live:true)
     println "> Saving soup: ${soup.save(flush:true)}"
     
     Thought th1 = new Thought(uuid: 7, rating: 2, soup: soup)
