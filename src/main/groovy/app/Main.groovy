@@ -7,7 +7,6 @@
 package app
 
 import org.grails.orm.hibernate.HibernateDatastore
-//org.springframework.transaction.annotation
 import org.springframework.transaction.annotation.Isolation
 
 import domain.*
